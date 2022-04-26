@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <title>Speak! Listen!</title>
+    <!-- Meta tags for SEO and social sharing -->
+    <link rel="canonical" href="https://sequoia-fate-swordtail.glitch.me/" />
+    <meta name="description" content="Speak.Listen." />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Speak.Listen." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://glitch.me/" />
+    <meta property="og:description" content="Speak.Listen." />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147"
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.3.0/dist/pouchdb.min.js"></script>
+    <script src="/js/pouchdb.find.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"
+    ></script>
+    <script src="/static/js/database.js" defer></script>
+    <script src="/static/js/load.js" defer></script>
+    <script src="/static/js/texttospeech.js" defer></script>
+    <script src="/static/js/speechtotext.js" defer></script>
+    
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="content" role="main">
+        <header>
+          <h1 class="title">inner.voice.over</h1>
+          <h3 id="loading" value="loading database, please wait">
+            loading database, please wait (requires chrome for now)
+          </h3>
+        </header>
+        <img
+          src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016"
+          class="illustration"
+          alt="Editor illustration"
+          title="Click the image!"
+        />
+
+        <div class="instructions">
+          <section class="mainControls">
+            <div id="buttons">
+              <button id="listenButton" class="btn">🎧 listen</button>
+              <button id="recordButton" class="btn">contribute 📣</button>
+              <button id="stopButton" class="btn" disabled="true" hidden="true">
+                🔴 stop
+              </button>
+              <br /><br />
+              <button id="addButton" class="btn" disabled="true" hidden="true">
+                add to self-compassion database
+              </button>
+            </div>
+          </section>
+
+          <section class="listenClips" style="float: left">
+            <h2 id="contributeClip" value="you have something to contribute">
+              you have something to contribute
+            </h2>
+            <h2 id="firstClip" value="be kind to your mind">
+              be kind to your mind
+            </h2>
+            <!--put a listen file here automatically-->
+            <article class="clip"></article>
+          </section>
+          <!--adds listen files, starts recording-->
+
+          <section class="recordClips" style="float: right"></section>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="links"></div>
+    </footer>
+  </body>
+</html>
