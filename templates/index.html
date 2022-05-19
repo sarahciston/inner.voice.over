@@ -12,54 +12,56 @@
   
   <body>
     <div class="wrapper">
-      <div class="content" role="main">
-        <header>
+      <header class="header">
           <h1 class="title">inner.voice.over</h1>
-          <h3 id="loading" value="loading database, please wait">
-            loading database, please wait (requires chrome for now)
+        <br><br>
+        <h3 id="loading" value="loading database, please wait">
+            loading database, please wait (requires Chrome for now)
           </h3>
+        <br><br>
+          <div id="buttons grid-item">
+            <button id="listenButton" class="btn">🎧 listen</button>
+            <button id="recordButton" class="btn">contribute 📣</button>
+            <button id="stopButton" class="btn" disabled="true" hidden="true">
+              🔴 stop
+            </button>
+            <br /><br />
+            <button id="addButton" class="btn" disabled="true" hidden="true">
+              add to self-compassion database
+            </button>
+          </div>
         </header>
-        <img
-          src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016"
-          class="illustration"
-          alt="Editor illustration"
-          title="Click the image!"
-        />
-
-        <div class="instructions">
-          <section class="mainControls">
-            <div id="buttons">
-              <button id="listenButton" class="btn">🎧 listen</button>
-              <button id="recordButton" class="btn">contribute 📣</button>
-              <button id="stopButton" class="btn" disabled="true" hidden="true">
-                🔴 stop
-              </button>
-              <br /><br />
-              <button id="addButton" class="btn" disabled="true" hidden="true">
-                add to self-compassion database
-              </button>
-            </div>
-          </section>
-
-          <section class="listenClips" style="float: left">
-            <h2 id="contributeClip" value="you have something to contribute">
-              you have something to contribute
-            </h2>
-            <h2 id="firstClip" value="be kind to your mind">
-              be kind to your mind
-            </h2>
+      
+      <nav class="nav"><h1 class="nav"> ( </h1></nav>
+      
+                          
+      <div class="content-left"> <!--  role="main"-->
+          <div class="listenClips grid-item" style="float: left">
+            <h2 id="contributeClip" value="you have something to contribute">you have something to contribute</h2>
+            <h2 id="firstClip" value="be kind to your mind">be kind to your mind</h2>
             <!--put a listen file here automatically-->
-            <article class="clip">
-          </section>
-          <!--adds listen files, starts recording-->
-
-          <section class="recordClips" style="float: right"></section>
+          </div>
+          </div>
+            <!--adds listen files, starts recording-->
+        <div class="content-right">
+          <div class="recordClips grid-item"  style="float: right">
+            <h2 id="testClip" value="test clip">test clip</h2>
+          </div>
+        </div> 
+    
+      <nav class="side"><h1 class="grid-item">)</h1></nav>
+    
+      <footer class="footer">
+        <div class="links grid-item">
+          <ul>
+            <li>
+              <a href="https://sarahciston.com">sarahciston.com</a>
+            </li>
+          </ul>
         </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="links"></div>
-    </footer>
+      </footer>
+
+    </div> <!--end of wrapper-->
 
     <!--   remote scripts   -->
 

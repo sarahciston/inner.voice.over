@@ -2,7 +2,7 @@
 
 /* Our default values set as CSS variables */
 :root {
-  --color-bg: #A38CD7; /*#69F7BE;*/
+  --color-bg: #69F7BE;
   --color-text-main: #000000;
   --color-primary: #FFFF00;
   --wrapper-height: 87vh;
@@ -103,45 +103,31 @@ body {
 
 /* Page structure */
 .wrapper {
-  display: grid;
-  grid-template-areas:
-    "header"
-    "nav"
-    "side"
-    "content-left"
-    "content-right"
-    "footer";
   min-height: var(--wrapper-height);
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  gap: 20px;
-/*   place-items: center; */
-/*   margin: 0 1rem; */
+/*   display: grid; */
+  place-items: center;
+  margin: 0 1rem;
 }
-
-.wrapper > * {
-  grid-column: col-start / span 12;
-}
-
-.content-left, .content-right {
-    display: flex;
-/*     grid-template-columns: auto auto; */
-    padding: 2rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.content {
+/*   display: flex; */
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Very light scaling for our illustration */
 .title {
-  color: white;
-  font-family: var(--font-family-header);
+  color: #2800FF;
+  font-family: HK Grotesk;
   font-style: normal;
   font-weight: bold;
-  font-size: 10rem;
+  font-size: 100px;
   line-height: 105%;
   margin: 0;
 }
-
 
 /* Very light scaling for our illustration */
 .illustration {
@@ -164,11 +150,10 @@ input {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 4px;
-  box-shadow: 0 2px #666666;
+  box-shadow: 0 2px #666;
   padding: 0.5rem 1rem;
   transition: 300ms;
 }
-
 
 /* Subheading */
 h2 {
@@ -186,65 +171,4 @@ h2 {
 */
 .btn:active {
   transform: translateY(3px);
-}
-
-.header {
-  display: flex;
-  grid-area: header;
-}
-
-/* parentheses */
-
-nav, .side {
-  display: flex;
-  grid-area: nav;
-  justify-content: space-between;
-  font-family: var(--font-family-header);
-  font-size: 20rem;
-  color: white;
-}
-
-
-@media (min-width: 500px) {
-  .wrapper {
-    display: grid;
-    grid-template-areas:
-      "header header header header"
-      "nav content-left content-right side"
-      "footer footer footer footer";
-    min-height: var(--wrapper-height);
-    place-items: center;
-    margin: 0 1rem;
-  }
-  
-  header {
-    grid-column: col-start / span 12;
-  }
-  
-  .nav {
-    grid-column: col-start / span 2;
-    grid-row: 2;
-  }
-  
-  .side {
-    grid-column: col-start 10 / span 2;
-    grid-row: 2;
-  }
-  
-  .content-left {
-    grid-column: col-start 3 / span 4;
-  }
-  
-  .content-right {
-    grid-column: col-start 6 / span 4;
-  }
-  
-  footer {
-    grid-column: col-start / span 12;
-  } 
-/*   
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  } */
 }
