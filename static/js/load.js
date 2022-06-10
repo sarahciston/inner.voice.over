@@ -18,16 +18,6 @@ window.addEventListener('DOMContentLoaded', () => {
   checkBrowser()
   
   loadData()
-  
-	// Papa.parse(public_spreadsheet_url, {
-	// download: true,
-	// header: true,
-	// dynamicTyping: true,
-	// complete: loadData
-	// // complete: function(results) {
-	// // 	console.log(results);
-	// // }
-	// })
 
 })
 

@@ -3,13 +3,14 @@
 /* Our default values set as CSS variables */
 :root {
   --color-bg: #A38CD7; /*#69F7BE;*/
-  --color-text-main: #000000;
-  --color-primary: #FFFF00;
+  --color-text-main: white; /*#000000;*/
+  --color-primary: lavender; /*#FFFF00*/
   --wrapper-height: 87vh;
   --image-max-width: 300px;
   --image-margin: 3rem;
   --font-family: "HK Grotesk";
   --font-family-header: "HK Grotesk";
+  --center-width: width/2;
 }
 
 /* Basic page style resets */
@@ -33,10 +34,30 @@
     format("opentype");
 }
 
+
+/* Button - Add it from the README instructions */
+button,
+input {
+  font-family: inherit;
+  font-size: 1.1rem;
+  height: 4rem;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 2px #666666;
+  padding: 0.5rem 1rem;
+  transition: 300ms;
+}
+
+/* .btnMain {
+  font-size: 1.1rem;
+} */
+
 /* Our remix on glitch button */
 .btn--remix {
   font-family: HK Grotesk;
-  padding: 0.75rem 1rem;
+/*   padding: 0.75rem 1rem; */
   font-size: 1.1rem;
   line-height: 1rem;
   font-weight: 500;
@@ -62,9 +83,9 @@
 /* Navigation grid */
 .footer {
   display: flex;
-  justify-content: space-between;
-  margin: 1rem auto 0;
-  padding: 1rem 0 0.75rem 0;
+/*   justify-content: space-between; */
+/*   margin: 1rem auto 0; */
+/*   padding: 1rem 0 0.75rem 0; */
   width: 100%;
   flex-wrap: wrap;
   border-top: 4px solid #fff;
@@ -74,9 +95,9 @@
 a:not(.btn--remix):visited {
   font-family: HK Grotesk;
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.1rem;
-  color: #000;
+  color: #333;
   text-decoration: none;
   border-style: none;
 }
@@ -85,12 +106,12 @@ a:not(.btn--remix):visited {
 }
 
 .footer .links {
-  padding: 0.5rem 1rem 1.5rem;
+/*   padding: 0.5rem 1rem 1.5rem; */
   white-space: nowrap;
 }
 
 .divider {
-  padding: 0 1rem;
+/*   padding: 0 1rem; */
 }
 /******************************************************************************
 END Glitch hello-app default styles
@@ -106,40 +127,72 @@ body {
   display: grid;
   grid-template-areas:
     "header"
+/*     "btn-menu" */
     "nav"
-    "side"
     "content-left"
     "content-right"
+    "side"
     "footer";
+/*   grid-auto-flow: row; */
   min-height: var(--wrapper-height);
   grid-template-columns: repeat(12, [col-start] 1fr);
   gap: 20px;
 /*   place-items: center; */
-/*   margin: 0 1rem; */
+/*   margin: 0 0.5rem; */
+/*   justify-content: center; */
 }
 
 .wrapper > * {
   grid-column: col-start / span 12;
+/*   justify-content: space-around; */
 }
 
 .content-left, .content-right {
     display: flex;
 /*     grid-template-columns: auto auto; */
-    padding: 2rem;
+/*     padding: 2rem; */
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    place-items: flex-start;
+    align-items: flex-start;
+    justify-items: flex-start;
+    align-content: left;
+    justify-content: left;
+}
+
+.header {
+  display: flex;
+  grid-area: header;
+  justify-content: center;
+  place-items: center;
+}
+
+/* parentheses */
+nav, .side {
+  display: flex;
+  grid-area: nav;
+/*   justify-content: center; */
+  align-items: center;
+  font-family: var(--font-family-header);
+  font-size: 20rem;
+  line-height: 1%;
+  text-align: center;
+  color: white;
+}
+
+/* Subheading */
+h2, h3, h4 {
+  color: var(--color-primary);
 }
 
 /* Very light scaling for our illustration */
 .title {
-  color: white;
+  color: var(--color-text-main);
   font-family: var(--font-family-header);
   font-style: normal;
   font-weight: bold;
-  font-size: 10rem;
+  font-size: 6rem;
+  text-align: center;
   line-height: 105%;
-  margin: 0;
 }
 
 
@@ -152,27 +205,7 @@ body {
 
 /* Instructions */
 .instructions {
-  margin: 1rem auto 0;
-}
-
-/* Button - Add it from the README instructions */
-button,
-input {
-  font-family: inherit;
-  font-size: 100%;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 2px #666666;
-  padding: 0.5rem 1rem;
-  transition: 300ms;
-}
-
-
-/* Subheading */
-h2 {
-  color: #2800FF;
+/*   margin: 1rem auto 0; */
 }
 
 /* Interactive image */
@@ -188,63 +221,50 @@ h2 {
   transform: translateY(3px);
 }
 
-.header {
-  display: flex;
-  grid-area: header;
-}
-
-/* parentheses */
-
-nav, .side {
-  display: flex;
-  grid-area: nav;
-  justify-content: space-between;
-  font-family: var(--font-family-header);
-  font-size: 20rem;
-  color: white;
-}
-
 
 @media (min-width: 500px) {
   .wrapper {
     display: grid;
     grid-template-areas:
-      "header header header header"
+      "header"
+      "nav side"
       "nav content-left content-right side"
-      "footer footer footer footer";
+      "footer";
     min-height: var(--wrapper-height);
-    place-items: center;
-    margin: 0 1rem;
+    place-items: flex-start;
+    margin: 0 0.5rem;
+/*     align-items: center; */
+/*     justify-content: center; */
   }
   
   header {
-    grid-column: col-start / span 12;
+    grid-column: col-start 1 / span 12;
+    grid-row: 1;
   }
   
   .nav {
-    grid-column: col-start / span 2;
-    grid-row: 2;
-  }
-  
-  .side {
-    grid-column: col-start 10 / span 2;
+    grid-column: col-start 1 / span 1;
     grid-row: 2;
   }
   
   .content-left {
-    grid-column: col-start 3 / span 4;
+    grid-column: col-start 2 / span 5;
+    grid-row: 2;
   }
   
   .content-right {
-    grid-column: col-start 6 / span 4;
+    grid-column: col-start 7 / span 5;
+    grid-row: 2;
+  }
+  
+  .side {
+    grid-column: col-start 11 / span 1;
+    grid-row: 2;
   }
   
   footer {
     grid-column: col-start / span 12;
+    grid-row: 4;
   } 
-/*   
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  } */
+
 }

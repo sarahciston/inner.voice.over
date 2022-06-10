@@ -7,10 +7,15 @@ sessionStorage.clear();
 let speechRec = new p5.SpeechRec(); //'en-US'), gotSpeech)
 
 let firstClip = document.getElementById("firstClip");
+let yourClip = document.getElementById("yourClip")
 
 let recordButton = document.querySelector("#recordButton");
 let stopButton = document.querySelector("#stopButton");
-let addButton = document.querySelector("#addButton");
+let addBtn = document.querySelector(".addBtn"); //gets first btn qsAll gets all, how to get just the one pressed?
+let delBtn = document.querySelector(".delBtn");
+
+let typeSpoken
+
 // stopButton.disabled = true
 // stopButton.hidden = true
 
@@ -28,8 +33,8 @@ recordButton.onclick = function () {
       recordButton.hidden = true;
       stopButton.disabled = false;
       stopButton.hidden = false;
-      addButton.disabled = false;
-      addButton.hidden = false;
+      // addButton.disabled = false;
+      // addButton.hidden = false;
 
       // mic = new p5.AudioIn()
       // mic.start()
@@ -54,26 +59,28 @@ stopButton.onclick = function () {
 };
 
 //send user contributions
-addButton.onclick = function () {
+// addButton.onclick = function () {
   // console.log("add to database clicked");
   
-  let newItem = USERTEXT[0]
+//   let newItem = USERTEXT[0]
   
-  let options = { 
-    method: 'POST',
-    headers: {'Content-Type': 'application/json;charset=utf-8'},
-    body: JSON.stringify(newItem)
-  }
+//   let options = { 
+//     method: 'POST',
+//     headers: {'Content-Type': 'application/json;charset=utf-8'},
+//     body: JSON.stringify(newItem)
+//   }
   
-  fetch('/api/new', options)
-    .then((res)=>{
-      res.json()
-  }).then((data)=>{
-      let _id = data.data
-      console.log(_id)
-      console.log(data)
+//   fetch('/api/new', options)
+//     .then((res)=>{
+//       res.json()
+//   }).then((data)=>{
+//       let _id = data.data
+//       let idTest = data["data"]
+//       console.log(data)
+//       console.log(_id)
+//       console.log(idTest)
       
-  }).catch((err)=>{console.log(err)});
+//   }).catch((err)=>{console.log(err)});
   
   //should this be bulk docs?
   // db.post(newItem, (err, result) => {
@@ -95,15 +102,71 @@ addButton.onclick = function () {
   //   output = {...output, blurb }
   // }
 
-  console.log(USERTEXT);
-};
+  // console.log(USERTEXT);
+// };
+
+function createAddBtn(){
+  let add = document.createElement("button");
+  add.style.display = "flex"
+  add.classList.add("addBtn")
+  add.classList.add("btn")
+  add.innerText = "❤️ add to db"
+  
+  add.onclick = function () {
+    console.log("clicked add to db");
+    let newItem = USERTEXT[0] //fix to select current clicked item
+
+    let options = { 
+      method: 'POST',
+      headers: {'Content-Type': 'application/json;charset=utf-8'},
+      body: JSON.stringify(newItem)
+    }
+
+    fetch('/api/new', options)
+      .then((res)=>{
+        res.json()
+    }).then((data)=>{
+        let _id = data.data
+        let idTest = data["data"]
+        console.log(data)
+        console.log(_id)
+        console.log(idTest)
+    }).catch((err)=>{console.log(err)});
+  }
+  return add
+}
+
+function createDelBtn(){
+  let del = document.createElement("button");
+  del.classList.add("delBtn")
+  del.classList.add("btn")
+  del.innerText = "❌ delete"
+  
+  del.onclick = function () {
+    console.log("clicked delete")
+    addBtn.style.display = "none"
+    console.log(USERTEXT.pop())
+    console.log(USERTEXT)
+  }
+  //remove item from session data too
+  return del
+}
+
 
 //display what was analyzed
 function displaySpeech() {
-  let results = gotSpeech();
-  let typeSpoken = document.createElement("p");
-  typeSpoken.textContent = results;
-  firstClip.appendChild(typeSpoken);
+  typeSpoken = document.createElement("p")
+  
+  let results = gotSpeech()
+  
+  let addBtn = createAddBtn()
+  let delBtn = createDelBtn()
+  
+  typeSpoken.textContent = results
+  typeSpoken.appendChild(addBtn)
+  typeSpoken.appendChild(delBtn)
+  
+  yourClip.appendChild(typeSpoken)
 
   voice.speak(results);
 

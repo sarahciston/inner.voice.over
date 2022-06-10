@@ -3,6 +3,7 @@ from markupsafe import escape
 import json
 
 import database
+import textsynth
 
 app = Flask(__name__)
 
@@ -47,6 +48,14 @@ def deleteOne():
   # database.deleteMany()
   return jsonify(res)
 
+
+# TEXTSYNTH API ROUTES
+@app.route('/api/synth')
+def synth():
+  PROMPT = "BOOHOO SHOE"
+  res = textsynth.send(PROMPT)
+  print(res)
+  return jsonify(res)
   
 # VIEWS  
 @app.route('/')

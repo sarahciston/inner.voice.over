@@ -12,31 +12,32 @@
   
   <body>
     <div class="wrapper">
-      <header class="header">
-          <h1 class="title">inner.voice.over</h1>
-        <br><br>
-        <h3 id="loading" value="loading database, please wait">
-            loading database, please wait (requires Chrome for now)
-          </h3>
-        <br><br>
-          <div id="buttons grid-item">
-            <button id="listenButton" class="btn">🎧 listen</button>
-            <button id="recordButton" class="btn">contribute 📣</button>
-            <button id="stopButton" class="btn" disabled="true" hidden="true">
-              🔴 stop
-            </button>
-            <br /><br />
-            <button id="addButton" class="btn" disabled="true" hidden="true">
-              add to self-compassion database
-            </button>
-          </div>
-        </header>
+      <header class="header grid-item">
+        <h1 class="title grid-item">inner.voice.over</h1>
+      </header>
       
-      <nav class="nav"><h1 class="nav"> ( </h1></nav>
-      
+<!--       <div class="btn-menu"> -->
+<!--             <button id="addButton" class="btn addBtn" disabled="true" hidden="true"> -->
+<!--              💘🔺💜❤️ add to self-compassion database -->
+<!--             </button> -->
+<!--         📛✅💟❤️ -->
+<!--             <button id="delButton" class="btn delBtn" disabled="true" hidden="true"> -->
+<!--              ❌ delete -->
+<!--             </button> -->
+<!--       </div> -->
+        
+      <nav class="nav grid-item">
+<!--         <div class="block"> -->
+          <button id="listenButton" class="btn btn--remix btnMain">🎧 listen</button><br/>
+          <h3 id="loading" value="loading database, please wait">loading database, please wait (requires Chrome for now)</h3>
+<!--         </div> -->
+<!--         <div class="block"> -->
+          <h1 class="nav parens"> ( </h1>
+<!--         </div> -->
+      </nav>
                           
-      <div class="content-left"> <!--  role="main"-->
-          <div class="listenClips grid-item" style="float: left">
+      <div class="content-left grid-item"> <!--  role="main"-->
+          <div class="listenClips" style="float: left">
             <h2 id="contributeClip" value="you have something to contribute">you have something to contribute</h2>
             <h2 id="firstClip" value="be kind to your mind">be kind to your mind</h2>
             <!--put a listen file here automatically-->
@@ -44,23 +45,36 @@
           </div>
             <!--adds listen files, starts recording-->
         <div class="content-right">
-          <div class="recordClips grid-item"  style="float: right">
-            <h2 id="testClip" value="test clip">test clip</h2>
+          <div class="recordClips"  style="float: right">
+            <h2 id="yourClip" class="spokenClips" value="empty"></h2>
           </div>
         </div> 
     
-      <nav class="side"><h1 class="grid-item">)</h1></nav>
-    
-      <footer class="footer">
-        <div class="links grid-item">
-          <ul>
+      <nav class="side grid-item">
+<!--         <div class="block"> -->
+          <button id="recordButton" class="btn">contribute 📣</button>
+          <button id="stopButton" class="btn" disabled="true" hidden="true">🔴 stop</button>
+            <br/>
+<!--         </div> -->
+
+<!--         <div class="block"> -->
+          <h1 class="nav parens">)</h1>
+<!--         </div> -->
+      </nav>
+
+      <footer class="footer grid-item">
+        <h3 class="about">
+          inner.voice.over is a text-driven machine learning project by <a href="https://sarahciston.com">sarah ciston</a>. thank you for contributing your compassion to this experiment! 
+        </h3>
+        <div class="links">
+<!--           <ul>
             <li>
-              <a href="https://sarahciston.com">sarahciston.com</a>
+              
             </li>
-          </ul>
+          </ul> -->
         </div>
       </footer>
-
+      
     </div> <!--end of wrapper-->
 
     <!--   remote scripts   -->
